@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>wire - Error page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Demo page">
+    <meta name="author" content="Nick Postma">
+    <link rel="stylesheet" type="text/css" href="{{ \Uri\Resolve::getInstance()->root() }}css/style.css" media="screen">
+</head>
+
+<body>
+
+    <header class="navigation">
+        <div class="container">
+            <a class="brand" href="{{ \Uri\Resolve::getInstance()->root() }}">Xental demo - error page 404</a>
+        </div>
+    </header>
+
+    <div class="body">
+        <div class="container">
+            <h3>Sorry. This page does not exists.</h3>
+        </div>
+
+        <div class="centerContent">
+            <img src="{{ \Uri\Resolve::getInstance()->root() }}img/smiley_sad.png">
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <div class="container">
+            <p class="credit">&copy; <a href="http://www.wire.nl" target="_blank">wire 2014</a></p>
+        </div>
+    </div>
+
+    <script>
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+/* Top level tree */
+ol.tree
+{
+	padding: 0 0 0 30px;
+	width: 300px;
+}
+
+/* Basic node element */
+li
+{
+    position: relative;
+    margin-left: -15px;
+    list-style: none;
+}
+
+/* Basic leaf node element */
+li.leaf
+{
+    margin-left: -1px !important;
+}
+
+/* a element in leaf node */
+li.leaf a
+{
+    background: url(../img/user.png) 0 0 no-repeat;
+    cursor: pointer;
+    padding-bottom: 12px;
+    color: #000;
+    padding-left: 32px;
+    text-decoration: none;
+    display: block;
+}
+
+/* The checkbox */
+li input
+{
+    position: absolute;
+    left: 0;
+    margin-left: 0;
+    margin-top: 15px;
+    opacity: 0;
+    z-index: 2;
+    cursor: pointer;
+    height: 1em;
+    width: 1em;
+    top: 0;
+}
+
+/* If there is a OL element right after the checkbox then display the expand button */
+li input + ol
+{
+    background: url(../img/toggle-small-expand.png) 40px 0 no-repeat;
+    margin: -1em 0 0 -44px; /* 15px */
+    height: 1em;
+}
+
+/* Give labels a group ICON. This will be the container for the users */
+li label
+{
+    background: url(../img/group.png) 15px 1px no-repeat;
+    cursor: pointer;
+    display: block;
+    padding-left: 50px;
+    padding-bottom: 12px;
+}
+
+/* If the input is checked, show the collapse icon */
+li input:checked + ol
+{
+    background: url(../img/toggle-small.png) 40px 0px no-repeat;
+    padding: 1.563em 0 0 80px;
+    height: auto;
+}
+
+/* If the input is NOT selected, hide the following LI elements */
+li input + ol > li {
+    display: none;
+    margin-left: -14px !important;
+    padding-left: 1px;
+}
+
+/* If the input is selected, show the following LI elements */
+li input:checked + ol > li {
+    display: block;
+    margin: 0 0 0.125em;  /* 2px */
+}

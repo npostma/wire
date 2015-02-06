@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Wire|next - demo page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Demo page">
+        <meta name="author" content="Nick Postma">
+        <link rel="stylesheet" type="text/css" href="{{ \Uri\Resolve::getInstance()->root() }}css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="{{ \Uri\Resolve::getInstance()->root() }}css/tree.css" media="screen">
+        <script src="{{ \Uri\Resolve::getInstance()->root() }}js/jquery_2_0_3.js"></script>
+        <script src="{{ \Uri\Resolve::getInstance()->root() }}js/apiCaller.js"></script>
+        <script src="{{ \Uri\Resolve::getInstance()->root() }}js/general.js"></script>
+        <script src="{{ \Uri\Resolve::getInstance()->root() }}js/debug.js"></script>
+    </head>
+
+    <body>
+        <header class="header">
+            <a class="brand" href="{{ \Uri\Resolve::getInstance()->root() }}">Wire|next demo - boomstructuur</a>
+        </header>
+
+        <div class="leftPanel rightBar form">
+            <h2>Toolbox</h2>
+            <h3>Bewerken</h3>
+            <form id="nodeEditForm">
+                <table>
+                    <tr>
+                        <th colspan="2"></th>
+                    </tr>
+                    <tr>
+                        <th>* Naam:</th>
+                        <td><input type="text" name="editName" id="editName"></td>
+                    </tr>
+                    <tr>
+                        <th>Omschrijving:</th>
+                        <td><textarea type="text" name="editDescription" id="editDescription"></textarea></td>
+                    </tr>
+                    <tr>
+                        <th><input type="hidden" id="nodeId" name="nodeId"></th>
+                        <td><input type="button" value="Ok" onclick="$('#nodeEditForm').submit()"><input type="button" value="Verwijderen" id="deleteButton" onclick="deleteNode();"></td>
+                    </tr>
+                </table>
+            </form>
+            <div id="newNodeContainer">
+                <h3>Toevoegen</h3>
+                <form id="nodeNewForm">
+                    <table>
+                        <tr>
+                            <th colspan="2"></th>
+                        </tr>
+                        <tr>
+                            <th>* Soort:</th>
+                            <td><select type="text" name="newType" id="newType">
+                                <option value="0">-- Selecteer --</option>
+                                <option value="1">Groep</option>
+                                <option value="2" id="userNodeType">Gebruiker</option>
+                            </select> </td>
+                        </tr>
+                        <tr>
+                            <th>* Naam:</th>
+                            <td><input type="text" name="newName" id="newName"></td>
+                        </tr>
+                        <tr>
+                            <th>Omschrijving:</th>
+                            <td><textarea type="text" name="newDescription" id="newDescription"></textarea></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>
+                                <input type="button" value="Ok" onclick="$('#nodeNewForm').submit()">
+                                <input type="button" value="Annuleren" onclick="$('#newName').val(''); $('#newDescription').val(''); $('#newType').val(0)">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div>
+                <br>
+                <strong>*</strong> Verplichte velden
+            </div>
+            <h2>Debug</h2>
+            <div>
+                <table class="form">
+                    <tr>
+                        <th colspan="2"></th>
+                    </tr>
+                    <tr>
+                        <th>Boomstructuur:</th>
+                        <td><input type="button" value="Toggle" onclick="toggleTree();" class="input-large"></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><input type="button" value="Toon opgeslagen data" onclick="rawTree();" class="input-large"></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><input type="button" value="Laad opgeslagen data" onclick="loadTree();"  class="input-large"></td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td><input type="button" value="Verwijder opgeslagen data" onclick="deleteTree();"  class="input-large"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="leftPanel" id="treeContainer">
+            <ol class="tree">
+                <li>
+                    <label data-name='Root' data-description="Dit is een beschrijving van de root node" data-nodeid="1">
+                        Root
+                    </label>
+                    <input type="checkbox" />
+                    <ol>
+
+                    </ol>
+                </li>
+            </ol>
+        </div>
+
+        <div class="leftPanel" id="debugContainer" style="display: none;">
+            </div>
+
+        <div class="footer clear">
+            <p class="credit">&copy; <a href="http://www.npdevelop.nl" target="_blank">Wire|next 2014</a></p>
+        </div>
+
+    </body>
+</html>
+
+
