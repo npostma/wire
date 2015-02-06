@@ -1,2 +1,2 @@
 # wire
-Wire. Lightweight RESTfull routing and responce framework
+Wire. Lightweight RESTfull routing and response framework
