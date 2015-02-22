@@ -25,7 +25,7 @@ class Tree implements IController
      */
     public function getIndex()
     {
-        $response = new \Response\Html(\Data\Tree::getInstance());
+        $response = new \Response\Html(\Model\Tree::getInstance());
         return $response;
     }
 
@@ -40,7 +40,7 @@ class Tree implements IController
             # throw new \Exception('Please enter a node ID');
             return new \Response\Html('Please enter a node ID');
         }
-        $response = new \Response\Html(\Data\Tree::getInstance()->find($id));
+        $response = new \Response\Html(\Model\Tree::getInstance()->find($id));
         return $response;
     }
 
@@ -50,7 +50,7 @@ class Tree implements IController
      */
     public function getJson($id = null)
     {
-        $response = new \Response\Json(\Data\Tree::getInstance());
+        $response = new \Response\Json(\Model\Tree::getInstance());
         return $response;
     }
 
@@ -60,7 +60,7 @@ class Tree implements IController
      */
     public function getHtml()
     {
-        $root = \Data\Tree::getInstance()->getRoot();
+        $root = \Model\Tree::getInstance()->getRoot();
         if (!$root) {
             return new \Response\Html('No data is stored in session');
         }
@@ -75,7 +75,7 @@ class Tree implements IController
      */
     public function postDelete()
     {
-        $root = \Data\Tree::getInstance()->getRoot();
+        $root = \Model\Tree::getInstance()->getRoot();
         $root->deleteNodes();
         $rootHtml = '<ol class="tree">' . Groupnode::build($root) . '</ol>';
         $response = new \Response\Html($rootHtml);

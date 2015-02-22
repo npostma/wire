@@ -7,7 +7,6 @@
 
 namespace Response;
 
-
 /**
  * Class for retrieving and showing html
  * Class View
