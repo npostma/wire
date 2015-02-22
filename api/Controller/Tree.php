@@ -1,5 +1,6 @@
 <?php
 /**
+ * THIS IS A EXAMPLE CONTROLLER FOR THE DEMO VIEW AND CAN BE REMOVED
  * Created by Nick Postma.
  * Date: 16-1-14
  * Time: 20:11
