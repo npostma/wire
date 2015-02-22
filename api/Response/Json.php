@@ -12,14 +12,16 @@ namespace Response;
  * Class for retrieving and showing Json
  * Class View
  */
-final class Json implements IResponse {
+final class Json implements IResponse
+{
     private $data;
 
     /**
      * Give any data for encoding
      * @param $data Mixed
      */
-    function __construct($data) {
+    function __construct($data)
+    {
         $this->data = $data;
     }
 

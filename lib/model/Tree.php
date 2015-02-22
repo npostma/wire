@@ -5,8 +5,7 @@
  * Time: 16:23
  */
 
-namespace Data;
-//use Controller\Node;
+namespace Model;
 
 /**
  * A simple unbalanced tree. Worst case searching is O(n)

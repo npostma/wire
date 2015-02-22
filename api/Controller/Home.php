@@ -14,13 +14,14 @@ use Response\View;
  * Class Home
  * @package Controller
  */
-class Home implements IController {
-
+class Home implements IController
+{
     /**
      * Main application HTML
      * @return View
      */
-    public function getIndex() {
+    public function getIndex()
+    {
         $view = new View('home');
         return $view;
     }

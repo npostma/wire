@@ -12,7 +12,8 @@ namespace Response;
  * Interface IResponse
  * @package Response
  */
-interface IResponse {
+interface IResponse
+{
     /**
      * Executes the response
      * @return mixed

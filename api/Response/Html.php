@@ -12,14 +12,16 @@ namespace Response;
  * Class for retrieving and showing html
  * Class View
  */
-final class Html implements IResponse {
+final class Html implements IResponse
+{
     private $data;
 
     /**
      * Give any data for display
      * @param $data Mixed
      */
-    function __construct($data) {
+    function __construct($data)
+    {
         $this->data = $data;
     }
 
@@ -29,7 +31,7 @@ final class Html implements IResponse {
      */
     public function execute()
     {
-        if(is_array($this->data) || is_object($this->data)) {
+        if (is_array($this->data) || is_object($this->data)) {
             echo \Data\Inspect::collection($this->data);
         } else {
             echo $this->data;

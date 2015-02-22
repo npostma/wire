@@ -12,6 +12,7 @@ namespace Controller;
  * Interface IController
  * @package Controller
  */
-interface IController {
-    public  function getIndex();
+interface IController
+{
+    public function getIndex();
 }

@@ -6,6 +6,7 @@
  */
 
 namespace Controller;
+
 use Response\Groupnode;
 use Response\Html;
 
@@ -14,13 +15,15 @@ use Response\Html;
  * Class Tree
  * @package Controller
  */
-class Tree implements IController {
+class Tree implements IController
+{
 
     /**
      * Main application HTML
      * @return Html
      */
-    public function getIndex() {
+    public function getIndex()
+    {
         $response = new \Response\Html(\Data\Tree::getInstance());
         return $response;
     }
@@ -29,8 +32,9 @@ class Tree implements IController {
      * @param $id
      * @return \Response\Html
      */
-    public function getNode($id = null) {
-        if($id == null) {
+    public function getNode($id = null)
+    {
+        if ($id == null) {
             # For the demo. Show the difference  between a exception and response
             # throw new \Exception('Please enter a node ID');
             return new \Response\Html('Please enter a node ID');
@@ -43,7 +47,8 @@ class Tree implements IController {
      * @param $id
      * @return \Response\Html
      */
-    public function getJson($id = null) {
+    public function getJson($id = null)
+    {
         $response = new \Response\Json(\Data\Tree::getInstance());
         return $response;
     }
@@ -52,9 +57,10 @@ class Tree implements IController {
      * Generates the tree into HTML
      * @return \Response\Html
      */
-    public function getHtml() {
+    public function getHtml()
+    {
         $root = \Data\Tree::getInstance()->getRoot();
-        if(!$root) {
+        if (!$root) {
             return new \Response\Html('No data is stored in session');
         }
         $rootHtml = '<ol class="tree">' . Groupnode::build($root) . '</ol>';
@@ -66,7 +72,8 @@ class Tree implements IController {
      * Delete all nodes except the root.
      * @return \Response\Html
      */
-    public function postDelete() {
+    public function postDelete()
+    {
         $root = \Data\Tree::getInstance()->getRoot();
         $root->deleteNodes();
         $rootHtml = '<ol class="tree">' . Groupnode::build($root) . '</ol>';

@@ -7,13 +7,14 @@
 
 namespace Response;
 
-use Response\Gui\HtmlParser;
+use Gui\HtmlParser;
 
 /**
  * Class for retrieving and showing HTML
  * Class View
  */
-final class View implements IResponse {
+final class View implements IResponse
+{
 
     /**
      * The extention of a view file
@@ -37,7 +38,8 @@ final class View implements IResponse {
      * Constructs a response on a view request
      * @param $name string
      */
-    function __construct($name) {
+    function __construct($name)
+    {
         $this->extension = '.view.html';
         $this->path = PATH_PUBLIC . 'views' . DIRECTORY_SEPARATOR;
         $this->name = $name;
@@ -50,7 +52,7 @@ final class View implements IResponse {
     public function execute()
     {
         $fullPath = $this->path . $this->name . $this->extension;
-        if(!file_exists($fullPath)) {
+        if (!file_exists($fullPath)) {
             throw new \Exception('View not found. Please correct your path.');
         }
 

@@ -9,7 +9,6 @@ namespace Route;
 
 use Controller\Error;
 use Response\IResponse;
-use Controller\Home;
 
 /**
  * Class for translating Uri's to controller calls

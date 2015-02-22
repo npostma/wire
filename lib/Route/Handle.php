@@ -21,17 +21,17 @@ abstract class Handle {
     protected $uri;
 
     /**
-     * @param $uri sets the uri
+     * @param $uri string sets the uri
      */
     public function setUri($uri) {
         $this->uri = $uri;
     }
 
     /**
-     * @return mixed gets the uri
+     * @return string gets the uri
      */
     public function getUri() {
-        return $this->uri();
+        return $this->uri;
     }
 
     /**

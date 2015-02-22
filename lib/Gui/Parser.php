@@ -5,12 +5,12 @@
  * Time: 14:59
  */
 
-namespace Response\Gui;
+namespace Gui;
 
 /**
  * Basic class for a parser
  * Interface Parser
- * @package Response\Gui
+ * @package Gui
  */
 abstract class Parser {
     /**

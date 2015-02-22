@@ -7,7 +7,6 @@
 
 namespace Controller;
 
-use Response\Gui\View;
 use Response\Json;
 use Response\Usernode;
 use Response\Groupnode;
@@ -17,13 +16,16 @@ use Response\Groupnode;
  * Class Home
  * @package Controller
  */
-class Node implements IController {
+class Node implements IController
+{
 
     /**
      * Main application HTML
+     * @throws \Exception
      * @return View
      */
-    public function getIndex() {
+    public function getIndex()
+    {
         throw new \Exception('Please implement and return a view');
     }
 
@@ -31,19 +33,20 @@ class Node implements IController {
      * Translates the GET data into a json encoded string
      * @return Json
      */
-    public function getContents() {
+    public function getContents()
+    {
         # Keep track of the last ID so that er is an auto increment number for new nodes.
         $_SESSION['node']['selectedId'] = $_GET['nodeId'];
-        if(!isset($_SESSION['node']['highestId'])) {
-            $_SESSION['node']['highestId']  = $_GET['nodeId'];
+        if (!isset($_SESSION['node']['highestId'])) {
+            $_SESSION['node']['highestId'] = $_GET['nodeId'];
 
             # First time click event is on the root node.
-            $node = new \Data\Node();
+            $node = new \Model\Node();
             $node->setName($_GET['name']);
             $node->setId($_GET['nodeId']);
             $node->setDescription($_GET['description']);
-            $node->setType(\Data\Node::TYPE_GROUP);
-            \Data\Tree::getInstance()->setRoot($node);
+            $node->setType(\Model\Node::TYPE_GROUP);
+            \Model\Tree::getInstance()->setRoot($node);
 
         } else {
             $_SESSION['node']['highestId'] = ($_GET['nodeId'] > $_SESSION['node']['highestId'] ? $_GET['nodeId'] : $_SESSION['node']['highestId']);
@@ -57,13 +60,14 @@ class Node implements IController {
      * Translates the POST data into a json encoded string
      * @return Json
      */
-    public function postContents() {
+    public function postContents()
+    {
         # Update node in tree, if it is not the root
-        if($_POST['nodeId'] > 1) {
-            $node = \Data\Tree::getInstance()->find($_POST['nodeId']);
+        if ($_POST['nodeId'] > 1) {
+            $node = \Model\Tree::getInstance()->find($_POST['nodeId']);
             $node->setName($_POST['name']);
             $node->setDescription($_POST['description']);
-            \Data\Tree::getInstance()->addNode($node->getParentId(), $node);
+            \Model\Tree::getInstance()->addNode($node->getParentId(), $node);
         }
 
         # Returning data
@@ -74,24 +78,25 @@ class Node implements IController {
     /**
      * Processes the post of a new node
      */
-    public function postAdd() {
+    public function postAdd()
+    {
         $parentNodeId = $_POST['parentNodeId'];
 
         # Create a child node
-        $node = new \Data\Node();
+        $node = new \Model\Node();
         $node->setName($_POST['name']);
         $node->setId(++$_SESSION['node']['highestId']);
         $node->setDescription($_POST['description']);
         $node->setType($_POST['nodeType']);
 
         # Add the node to the tree
-        \Data\Tree::getInstance()->addNode($parentNodeId, $node);
+        \Model\Tree::getInstance()->addNode($parentNodeId, $node);
 
-        switch($_POST['nodeType']) {
-            case \Data\Node::TYPE_USER:
+        switch ($_POST['nodeType']) {
+            case \Model\Node::TYPE_USER:
                 $response = new Usernode($node);
                 break;
-            case \Data\Node::TYPE_GROUP:
+            case \Model\Node::TYPE_GROUP:
                 $response = new Groupnode($node);
                 break;
         }
@@ -101,8 +106,9 @@ class Node implements IController {
     /**
      * Remove an element from the tree
      */
-    public function postDelete() {
-        \Data\Tree::getInstance()->deleteNode($_POST['nodeId']);
+    public function postDelete()
+    {
+        \Model\Tree::getInstance()->deleteNode($_POST['nodeId']);
 
         # Returning data
         $json = new Json($_POST);

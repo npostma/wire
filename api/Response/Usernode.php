@@ -11,7 +11,8 @@ namespace Response;
  * Class for retrieving and showing an usernode
  * Class View
  */
-final class Usernode extends INode {
+final class Usernode extends INode
+{
 
     /**
      * Executes the response
@@ -24,19 +25,19 @@ final class Usernode extends INode {
 
     /**
      * Converts a user node into HTML
-     * @param \Data\Node $node
+     * @param \Model\Node $node
      * @return string HTML
      */
-    public function convert(\Data\Node $node)
+    public function convert(\Model\Node $node)
     {
         return '
             <li
                 class="leaf"
-                data-name="' . $node->getName() .  '"
-                data-description="' . $node->getDescription() .  '"
-                data-nodeid="' . $node->getId() .  '"
+                data-name="' . $node->getName() . '"
+                data-description="' . $node->getDescription() . '"
+                data-nodeid="' . $node->getId() . '"
             >
-                <a class="user">'. $node->getName() . '</a>
+                <a class="user">' . $node->getName() . '</a>
             </li>
         ';
     }

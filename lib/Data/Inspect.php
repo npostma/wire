@@ -18,7 +18,6 @@ final class Inspect {
      * Constructor placeholder
      */
     private function __construct() {
-
     }
 
     /**
@@ -29,6 +28,4 @@ final class Inspect {
     public static function collection($mixed){
         return '<pre>' . print_r($mixed, 1) . '</pre>';
     }
-
-
 }

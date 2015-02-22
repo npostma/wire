@@ -11,7 +11,8 @@ namespace Response;
  * Class for retrieving and showing a group node
  * Class View
  */
-final class Groupnode extends INode {
+final class Groupnode extends INode
+{
 
     /**
      * Executes the response
@@ -24,27 +25,28 @@ final class Groupnode extends INode {
 
     /**
      * Converts a user node into HTML
-     * @param \Data\Node $node
+     * @param \Model\Node $node
      * @return string HTML
      */
-    public function convert(\Data\Node $node)
+    public function convert(\Model\Node $node)
     {
         return Groupnode::header($node) . Groupnode::footer();
     }
 
     /**
      * Generates the header part of the groupnode
-     * @param \Data\Node $node
+     * @param \Model\Node $node
      * @return string
      */
-    private static function header(\Data\Node $node) {
+    private static function header(\Model\Node $node)
+    {
         return '<li>
                 <label
-                    data-name="' . $node->getName() .  '"
-                    data-description="' . $node->getDescription() .  '"
-                    data-nodeid="' . $node->getId() .  '"
+                    data-name="' . $node->getName() . '"
+                    data-description="' . $node->getDescription() . '"
+                    data-nodeid="' . $node->getId() . '"
                 >
-                    ' . $node->getName() .  '
+                    ' . $node->getName() . '
                 </label>
                 <input type="checkbox" />
                 <ol>';
@@ -54,22 +56,24 @@ final class Groupnode extends INode {
      * Generates the footer part of the groupnode
      * @return string
      */
-    private static function footer() {
-        return  '</ol></li>';
+    private static function footer()
+    {
+        return '</ol></li>';
     }
 
     /**
      * Builds the tree from A groupnode down to the last nodes
-     * @param \Data\Node $node
+     * @param \Model\Node $node
      * @return string
      */
-    public static function build(\Data\Node $node) {
+    public static function build(\Model\Node $node)
+    {
         $html = Groupnode::header($node);
-        /* @var $childNode Node */
-        foreach($node->getChildren() AS $childNode) {
-            if($childNode->getType() == \Data\Node::TYPE_GROUP) {
+        /* @var $childNode \Model\Node */
+        foreach ($node->getChildren() AS $childNode) {
+            if ($childNode->getType() == \Model\Node::TYPE_GROUP) {
                 $html .= Groupnode::build($childNode);
-            } else if($childNode->getType() == \Data\Node::TYPE_USER) {
+            } else if ($childNode->getType() == \Model\Node::TYPE_USER) {
                 $Usernode = new Usernode($childNode);
                 $html .= $Usernode->convert($childNode);
             }

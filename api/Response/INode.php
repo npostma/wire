@@ -7,25 +7,26 @@
 
 namespace Response;
 
-abstract class INode implements IResponse {
-
+abstract class INode implements IResponse
+{
     /**
-     * @var \Data\Node
+     * @var \Model\Node
      */
     protected $node;
 
     /**
      * Constructs a response on a group request
-     * @param $node \Data\Node
+     * @param $node \Model\Node
      */
-    function __construct($node) {
+    function __construct($node)
+    {
         $this->node = $node;
     }
 
     /**
      * Converts a user node into HTML
-     * @param \Data\Node $node
+     * @param \Model\Node $node
      * @return string HTML
      */
-    public abstract function convert(\Data\Node $node) ;
+    public abstract function convert(\Model\Node $node);
 } 

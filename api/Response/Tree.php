@@ -7,24 +7,24 @@
 
 namespace Response;
 
-use Response\Gui\HtmlParser;
-
 /**
  * Class for retrieving and showing a group node
  * Class View
  */
-final class Tree implements IResponse {
+final class Tree implements IResponse
+{
 
     /**
-     * @var \Data\Node
+     * @var \Model\Node
      */
     private $node;
 
     /**
      * Constructs a html tree response from a specific node
-     * @param $node \Data\Node
+     * @param $node \Model\Node
      */
-    function __construct($node) {
+    function __construct(\Model\Node $node)
+    {
         $this->node = $node;
     }
 
@@ -37,11 +37,11 @@ final class Tree implements IResponse {
         echo '
              <li>
                 <label
-                    data-name="' . $this->node->getName() .  '"
-                    data-description="' . $this->node->getDescription() .  '"
-                    data-nodeid="' . $this->node->getId() .  '"
+                    data-name="' . $this->node->getName() . '"
+                    data-description="' . $this->node->getDescription() . '"
+                    data-nodeid="' . $this->node->getId() . '"
                 >
-                    ' . $this->node->getName() .  '
+                    ' . $this->node->getName() . '
                 </label>
                 <input type="checkbox" />
                 <ol>

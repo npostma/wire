@@ -11,6 +11,9 @@ namespace Data;
  * Class Node
  * @package Data
  */
+
+namespace Model;
+
 class Node {
 
     /**

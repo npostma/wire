@@ -13,7 +13,8 @@ namespace Uri;
  * Class Resolve
  * @package Uri
  */
-class Resolve {
+class Resolve
+{
 
     /**
      * Defining local constants
@@ -28,20 +29,23 @@ class Resolve {
     /**
      * Private constructor
      */
-    private function __construct() {
+    private function __construct()
+    {
     }
 
     /**
      * Destructor placeholder
      */
-    public function __destruct() {
+    public function __destruct()
+    {
     }
 
     /**
      * Returns the resource location for the controllers
      * @return string uniform resource identifier
      */
-    public function uri() {
+    public function uri()
+    {
         return str_replace(Resolve::pathPublic, '', $_SERVER['REQUEST_URI']);
     }
 
@@ -49,7 +53,8 @@ class Resolve {
      * Returns the root path
      * @return string
      */
-    public function root() {
+    public function root()
+    {
         return Resolve::pathPublic;
     }
 
@@ -57,8 +62,9 @@ class Resolve {
      * Returns the resolve instance
      * @return Resolve
      */
-    public static function getInstance() {
-        if(!self::$instance) {
+    public static function getInstance()
+    {
+        if (!self::$instance) {
             self::$instance = new self();
         }
         return self::$instance;
